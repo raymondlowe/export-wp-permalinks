@@ -3,7 +3,7 @@
 /* from https://stackoverflow.com/questions/3464701/export-list-of-pretty-permalinks-and-post-title */
 
 
-echo "date,permalink\n";
+
 include "wp-load.php";
 
 $posts = new WP_Query('post_type=any&posts_per_page=-1&post_status=publish');
@@ -18,8 +18,12 @@ $posts = $wpdb->get_results("
 */
 
 header('Content-type:text/plain');
+echo "date,lengthofcontent,permalink\n";
 foreach($posts as $post) {
     $dateofpost = get_the_date('Y-m-d', $post->ID);
+    $textcontent = $post->post_content;
+    // print_r($textcontent);
+    $lengthofcontent = str_word_count($textcontent);
     switch ($post->post_type) {
         case 'revision':
         case 'nav_menu_item':
@@ -38,5 +42,5 @@ foreach($posts as $post) {
             break;
     }
     /*echo "\n{$post->post_type}\t{$permalink}\t{$post->post_title}";*/
-    echo "{$dateofpost},{$permalink}\n";
+    echo "{$dateofpost},{$lengthofcontent},{$permalink}\n";
 }
