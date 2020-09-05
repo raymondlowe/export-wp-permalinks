@@ -2,6 +2,8 @@
 
 /* from https://stackoverflow.com/questions/3464701/export-list-of-pretty-permalinks-and-post-title */
 
+
+echo "date,permalink\n";
 include "wp-load.php";
 
 $posts = new WP_Query('post_type=any&posts_per_page=-1&post_status=publish');
