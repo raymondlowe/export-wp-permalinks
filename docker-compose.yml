@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  mycontainer:
+    image: testenvironment
+    ports:
+      - "85:80"
+    build: .
+    volumes:
+      - type: bind
+        source: ./export-dates-and-permalinks.php 
+        target: /app/export-dates-and-permalinks.php
