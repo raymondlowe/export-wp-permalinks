@@ -1,6 +1,7 @@
 <?php
 
 /* based on https://stackoverflow.com/questions/3464701/export-list-of-pretty-permalinks-and-post-title */
+/* this version : https://github.com/raymondlowe/export-wp-permalinks */
 
 
 
